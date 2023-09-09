@@ -277,18 +277,19 @@ int main(){
     testObj.initCard();
     testObj.dumpCard();
     testObj.clear();
-
-    cout << "Enter number of rows" << endl;
-    cin >> testRows;
-    cout << "Enter number of columns" << endl;
-    cin >> testCols;
-    cout << "Enter number of minimum balls" << endl;
-    cin >> testMin;
-    cout << "Enter number of maximum balls" << endl;
-    cin >> testMax;
-
-    testObj.reCreateCard(testRows, testCols, testMin, testMax);
     testObj.dumpCard();
-    testObj.clear();
+
+    // cout << "Enter number of rows" << endl;
+    // cin >> testRows;
+    // cout << "Enter number of columns" << endl;
+    // cin >> testCols;
+    // cout << "Enter number of minimum balls" << endl;
+    // cin >> testMin;
+    // cout << "Enter number of maximum balls" << endl;
+    // cin >> testMax;
+
+    // testObj.reCreateCard(testRows, testCols, testMin, testMax);
+    // testObj.dumpCard();
+    // testObj.clear();
     //return 0;
 };
