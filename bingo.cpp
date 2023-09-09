@@ -95,7 +95,7 @@ bool Bingo::reCreateCard(int rows, int columns, int min, int max){
         m_numRows = 0;
         m_numCols = 0;
         m_minBallVal = 0;   
-        m_maxBallVal = 0;   
+        m_maxBallVal = 0;  
     } else if (min < 11 || max > 85){
         cout << "Invalid number of balls. Creating empty object..." << endl;
         m_trackCols = nullptr;  
@@ -106,7 +106,7 @@ bool Bingo::reCreateCard(int rows, int columns, int min, int max){
         m_numRows = 0;
         m_numCols = 0;
         m_minBallVal = 0;   
-        m_maxBallVal = 0;   
+        m_maxBallVal = 0; 
     } else if ((max - min) % 5 != 0){
         cout << "Invalid number of balls. Creating empty object..." << endl;
         m_trackCols = nullptr;  
@@ -117,10 +117,11 @@ bool Bingo::reCreateCard(int rows, int columns, int min, int max){
         m_numRows = 0;
         m_numCols = 0;
         m_minBallVal = 0;   
-        m_maxBallVal = 0;  
+        m_maxBallVal = 0; 
     } else {
         cout << "Initialization successfull. Creating bingo object..." << endl;
-        m_trackCols = new int[columns];  
+        m_trackCols = new int[columns];
+          
         m_trackRows = new int[rows];  
         m_helper = new Cell[m_maxBallVal+1];    
         m_card = new Cell*[rows];     
@@ -131,57 +132,25 @@ bool Bingo::reCreateCard(int rows, int columns, int min, int max){
         valid = true;   
     }
     if (valid==true){
-        int totalRange = m_maxBallVal - m_minBallVal + 1;
-        int portion = totalRange / m_numCols;
-        // col1 range = (min, min+portion), col2 range = (min+portion, min+2*portion)...
-        Random range1(m_minBallVal, m_minBallVal+portion);
-        Random range2(m_minBallVal+portion, m_minBallVal+(2*portion));
-        Random range3(m_minBallVal+(2*portion), m_minBallVal+(3*portion));
-        Random range4(m_minBallVal+(3*portion), m_minBallVal+(4*portion));
-        Random range5(m_minBallVal+(4*portion), m_minBallVal+(5*portion));
-        for (int i = 0; i < m_numRows; i++){
-            m_card[i] = new Cell[m_numCols];
-        }
-        // iterate through list and as it goes to each column in the row, assign random value of correct range
-        for (int i = 0; i < m_numRows; i++){
-            for(int j = 0; j < m_numCols; j++){
-                if (j == 0){
-                    m_card[i][j].setVal(range1.getRandNum()); 
-                }else if (j == 1){
-                    m_card[i][j].setVal(range2.getRandNum());
-                }else if (j == 2){
-                    m_card[i][j].setVal(range3.getRandNum ());
-                }else if (j == 3){
-                    m_card[i][j].setVal(range4.getRandNum());
-                }else {
-                    m_card[i][j].setVal(range5.getRandNum());
-                }
-                m_card[i][j].setRow(i);
-                m_card[i][j].setCol(j);
-                m_helper[m_card[i][j].getVal()].setVal(m_card[i][j].getVal());
-                m_helper[m_card[i][j].getVal()].setRow(i);
-                m_helper[m_card[i][j].getVal()].setCol(j);
-            }
-        }
-        return true;
+        return initCard();
     }
-    return false; 
+    return valid;
 }
 
 Bingo::~Bingo(){
-    delete m_trackCols;  
-    delete m_trackRows;  
-    delete m_helper;    
+    delete[] m_trackCols;  
+    delete[] m_trackRows;  
+    delete[] m_helper;    
     for (int i = 0; i < m_numRows; i++){
         delete[] m_card[i];
     }
-    delete m_card;     
+    delete[] m_card;     
 }
 
 void Bingo::clear(){
-    delete m_trackCols;  
-    delete m_trackRows;  
-    delete m_helper; 
+    delete[] m_trackCols;  
+    delete[] m_trackRows;  
+    delete[] m_helper; 
     m_trackCols = nullptr;  
     m_trackRows = nullptr;  
     m_helper = nullptr;       
@@ -189,7 +158,7 @@ void Bingo::clear(){
     for (int i = 0; i < m_numRows; i++){
         delete[] m_card[i];
     }
-    delete m_card;
+    delete[] m_card;
     m_card = nullptr;     
     m_numRows = 0;
     m_numCols = 0;
@@ -201,6 +170,7 @@ bool Bingo::initCard(){
     // populate card with random values within the requirements
     // each column gets 20% of the range from min to max in order
     if (m_card!=nullptr){
+
         int totalRange = m_maxBallVal - m_minBallVal + 1;
         int portion = totalRange / m_numCols;
         // col1 range = (min, min+portion), col2 range = (min+portion, min+2*portion)...
@@ -239,8 +209,10 @@ bool Bingo::initCard(){
 }
 
 vector<int> Bingo::drawBalls(){
-    
-    return vector<int>{};
+    Random blower(m_minBallVal, m_maxBallVal, SHUFFLE); // a blower in the thing that mixes and dispenses the balls in bingo
+    vector<int> balls;
+    blower.getShuffle(balls);
+    return balls;
 }
 
 int Bingo::play(int numDraws, vector<int> rndBalls){
@@ -297,7 +269,7 @@ int main(){
     Bingo testObj(testRows, testCols, testMin, testMax);
     bool success = testObj.initCard();
 
-    while (success==false){
+    while (success!=true){
         cout << "Enter number of rows" << endl;
         cin >> testRows;
         cout << "Enter number of columns" << endl;
@@ -310,6 +282,5 @@ int main(){
         bool success = testObj.reCreateCard(testRows, testCols, testMin, testMax);
     };
     testObj.dumpCard();
-    testObj.clear();
     return 0;
 };
