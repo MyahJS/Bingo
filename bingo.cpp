@@ -283,5 +283,6 @@ int main(){
     // };
     testObj.initCard();
     testObj.dumpCard();
-    return 0;
+    testObj.clear();
+    //return 0;
 };
