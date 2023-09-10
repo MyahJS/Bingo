@@ -322,35 +322,35 @@ bool operator==(const Cell & lhs, const Cell & rhs){
 
 // FOR TESTING FUNCTIONS. DELETE WHEN FINISHED
 // int main(){
-//     int testRows, testCols, testMin, testMax;
+    // int testRows, testCols, testMin, testMax;
 
-//     cout << "Enter number of rows" << endl;
-//     cin >> testRows;
-//     cout << "Enter number of columns" << endl;
-//     cin >> testCols;
-//     cout << "Enter number of minimum balls" << endl;
-//     cin >> testMin;
-//     cout << "Enter number of maximum balls" << endl;
-//     cin >> testMax;
+    // cout << "Enter number of rows" << endl;
+    // cin >> testRows;
+    // cout << "Enter number of columns" << endl;
+    // cin >> testCols;
+    // cout << "Enter number of minimum balls" << endl;
+    // cin >> testMin;
+    // cout << "Enter number of maximum balls" << endl;
+    // cin >> testMax;
 
-//     Bingo testObj(testRows, testCols, testMin, testMax);
+    // Bingo testObj(testRows, testCols, testMin, testMax);
 
-//     testObj.initCard();
-//     testObj.dumpCard();
-//     testObj.clear();
-//     testObj.dumpCard();
+    // testObj.initCard();
+    // testObj.dumpCard();
+    // testObj.clear();
+    // testObj.dumpCard();
 
-//     // cout << "Enter number of rows" << endl;
-//     // cin >> testRows;
-//     // cout << "Enter number of columns" << endl;
-//     // cin >> testCols;
-//     // cout << "Enter number of minimum balls" << endl;
-//     // cin >> testMin;
-//     // cout << "Enter number of maximum balls" << endl;
-//     // cin >> testMax;
+    // cout << "Enter number of rows" << endl;
+    // cin >> testRows;
+    // cout << "Enter number of columns" << endl;
+    // cin >> testCols;
+    // cout << "Enter number of minimum balls" << endl;
+    // cin >> testMin;
+    // cout << "Enter number of maximum balls" << endl;
+    // cin >> testMax;
 
-//     // testObj.reCreateCard(testRows, testCols, testMin, testMax);
-//     // testObj.dumpCard();
-//     // testObj.clear();
-//     // return 0;
+    // testObj.reCreateCard(testRows, testCols, testMin, testMax);
+    // testObj.dumpCard();
+    // testObj.clear();
+    // return 0;
 // };
