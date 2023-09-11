@@ -70,6 +70,8 @@ int main(){
 
     obj1.initCard();
 
+    obj1.dumpCard();
+
     // if (obj1.initCard()){
     //     obj1.dumpCard();
     //     cout << "\ngame over after " << obj1.play(BALLS,balls) << " hits!\n" << endl;
