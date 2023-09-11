@@ -68,6 +68,7 @@ int main(){
     Bingo obj1(CARDROWS,CARDCOLS,MINVAL,MAXVAL);
     vector<int> balls = obj1.drawBalls();
 
+    obj1.initCard();
 
     // if (obj1.initCard()){
     //     obj1.dumpCard();
