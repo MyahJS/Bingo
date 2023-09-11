@@ -287,13 +287,17 @@ const Bingo & Bingo::operator=(const Bingo & rhs){
     // Assignment operator
     // Preconditions: a bingo object has been created
     // Postconditions: returns a deep copy of the specified bingo object
-    
+
     m_helperSize = rhs.m_helperSize;
     m_numRows = rhs.m_numRows;
     m_numCols = rhs.m_numCols;
     m_minBallVal = rhs.m_minBallVal;
     m_maxBallVal = rhs.m_maxBallVal;
     if (rhs.m_card != nullptr){
+        m_trackCols = new int[m_numCols];
+        m_trackRows = new int[m_numRows];
+        m_helper = new Cell[m_helperSize];
+        m_card = new Cell*[m_numRows];
         for (int i = 0; i < rhs.m_numCols; i++){
             m_trackCols[i] = rhs.m_trackCols[i];
         }
@@ -301,14 +305,18 @@ const Bingo & Bingo::operator=(const Bingo & rhs){
             m_trackRows[i] = rhs.m_trackRows[i];
         }
         for (int i = 0; i < rhs.m_helperSize; i++){
-            m_helper[i] = rhs.m_helper[i];
+            m_helper[i].setVal(rhs.m_helper[i].getVal());
+            m_helper[i].setRow(rhs.m_helper[i].getRow());
+            m_helper[i].setCol(rhs.m_helper[i].getCol());
         }
         for (int i = 0; i < rhs.m_numRows; i++){
             m_card[i] = new Cell[m_numCols];
         }
         for (int i = 0; i < rhs.m_numRows; i++){
             for(int j; j < rhs.m_numCols; j++){
-                m_card[i][j] = rhs.m_card[i][j];
+                m_card[i][j].setVal(rhs.m_card[i][j].getVal());
+                m_card[i][j].setRow(rhs.m_card[i][j].getRow());
+                m_card[i][j].setCol(rhs.m_card[i][j].getCol());
             }
         }
     } else {
