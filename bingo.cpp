@@ -215,31 +215,31 @@ Bingo::~Bingo(){
     delete[] m_card;     
 }
 
-// void Bingo::clear(){
-//     // Function for deallocating and then creating an empty bingo object
-//     // Preconditions: a non empty bingo object was already created 
-//     // Postconditions: deallocate all dynamically allocated memory
-//     //  and reinitialize all member variables to default values
+void Bingo::clear(){
+    // Function for deallocating and then creating an empty bingo object
+    // Preconditions: a non empty bingo object was already created 
+    // Postconditions: deallocate all dynamically allocated memory
+    //  and reinitialize all member variables to default values
     
-//     if (m_card != nullptr){ // check that bingo object in not empty
-//         delete[] m_trackCols;  
-//         delete[] m_trackRows;  
-//         delete[] m_helper; 
-//         m_trackCols = nullptr;  
-//         m_trackRows = nullptr;  
-//         m_helper = nullptr;       
-//         m_helperSize = 0;
-//         for (int i = 0; i < m_numRows; i++){
-//             delete[] m_card[i];
-//         }
-//         delete[] m_card;
-//         m_card = nullptr;     
-//         m_numRows = 0;
-//         m_numCols = 0;
-//         m_minBallVal = 0;   
-//         m_maxBallVal = 0;
-//     } 
-// }
+    if (m_card != nullptr){ // check that bingo object in not empty
+        delete[] m_trackCols;  
+        delete[] m_trackRows;  
+        delete[] m_helper; 
+        m_trackCols = nullptr;  
+        m_trackRows = nullptr;  
+        m_helper = nullptr;       
+        m_helperSize = 0;
+        for (int i = 0; i < m_numRows; i++){
+            delete[] m_card[i];
+        }
+        delete[] m_card;
+        m_card = nullptr;     
+        m_numRows = 0;
+        m_numCols = 0;
+        m_minBallVal = 0;   
+        m_maxBallVal = 0;
+    } 
+}
 
 vector<int> Bingo::drawBalls(){
     // Function to genereate a series of unique ball values within the given range
