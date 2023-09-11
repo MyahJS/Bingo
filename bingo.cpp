@@ -47,7 +47,7 @@ Bingo::Bingo(int rows, int columns, int min, int max){
         m_numCols = 0;
         m_minBallVal = 0;   
         m_maxBallVal = 0;      
-    } else if ((max - min + 1) % 5 != 0){
+    } else if (min < 1 || max > 90 || (max - min + 1) % 5 != 0){
         cout << "Invalid number of balls. Creating empty object..." << endl;
         m_trackCols = nullptr;  
         m_trackRows = nullptr; 
@@ -169,7 +169,7 @@ bool Bingo::reCreateCard(int rows, int columns, int min, int max){
         m_numCols = 0;
         m_minBallVal = 0;   
         m_maxBallVal = 0;   
-    } else if ((max - min + 1) % 5 != 0){
+    } else if (min < 1 || max > 90 || (max - min + 1) % 5 != 0){
         cout << "Invalid number of balls. Creating empty object..." << endl;
         m_trackCols = nullptr;  
         m_trackRows = nullptr; 
@@ -319,38 +319,3 @@ bool operator==(const Cell & lhs, const Cell & rhs){
             (lhs.m_row == rhs.m_row) &&
             (lhs.m_value == rhs.m_value));
 };
-
-// FOR TESTING FUNCTIONS. DELETE WHEN FINISHED
-// int main(){
-    // int testRows, testCols, testMin, testMax;
-
-    // cout << "Enter number of rows" << endl;
-    // cin >> testRows;
-    // cout << "Enter number of columns" << endl;
-    // cin >> testCols;
-    // cout << "Enter number of minimum balls" << endl;
-    // cin >> testMin;
-    // cout << "Enter number of maximum balls" << endl;
-    // cin >> testMax;
-
-    // Bingo testObj(testRows, testCols, testMin, testMax);
-
-    // testObj.initCard();
-    // testObj.dumpCard();
-    // testObj.clear();
-    // testObj.dumpCard();
-
-    // cout << "Enter number of rows" << endl;
-    // cin >> testRows;
-    // cout << "Enter number of columns" << endl;
-    // cin >> testCols;
-    // cout << "Enter number of minimum balls" << endl;
-    // cin >> testMin;
-    // cout << "Enter number of maximum balls" << endl;
-    // cin >> testMax;
-
-    // testObj.reCreateCard(testRows, testCols, testMin, testMax);
-    // testObj.dumpCard();
-    // testObj.clear();
-    // return 0;
-// };
