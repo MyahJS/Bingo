@@ -294,10 +294,6 @@ const Bingo & Bingo::operator=(const Bingo & rhs){
     m_minBallVal = rhs.m_minBallVal;
     m_maxBallVal = rhs.m_maxBallVal;
     if (rhs.m_card != nullptr){
-        m_trackCols = new int[m_numCols];
-        m_trackRows = new int[m_numRows];
-        m_helper = new Cell[m_helperSize];
-        m_card = new Cell*[m_numRows];
         for (int i = 0; i < rhs.m_numCols; i++){
             m_trackCols[i] = rhs.m_trackCols[i];
         }

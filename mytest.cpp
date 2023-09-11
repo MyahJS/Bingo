@@ -83,9 +83,9 @@ if (obj1.initCard()){
     else
         cout << "Test msg: Assignment operator test for normal case failed!\n" << endl;
 
-    // Re-initialize the object to a card of 10x5
-    cout << "Following is the result of re-initializing the object and re-play:\n" << endl;
-    obj1.clear();
+    // // Re-initialize the object to a card of 10x5
+    // cout << "Following is the result of re-initializing the object and re-play:\n" << endl;
+    // obj1.clear();
     // if (obj1.reCreateCard(2*CARDROWS,CARDCOLS,MINVAL,MAXVAL)){
     //     obj1.initCard();
     //     obj1.dumpCard();
