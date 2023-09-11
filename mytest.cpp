@@ -24,6 +24,8 @@ class Tester{
             result = result && (lhs.m_helper[i] == rhs.m_helper[i]);
             if ((lhs.m_helper[i] == rhs.m_helper[i]) == false){
                     cout << "helper cell not the same" << endl;
+            } else {
+                cout << "passed" << endl;
             }
         }
 
@@ -33,6 +35,8 @@ class Tester{
             result = result && (lhs.m_trackRows[i] == rhs.m_trackRows[i]);
             if ((lhs.m_trackRows[i] == rhs.m_trackRows[i]) == false){
                     cout << "track rows value not the same" << endl;
+            } else {
+                cout << "passed" << endl;
             }
         }
 
@@ -42,6 +46,8 @@ class Tester{
             result = result && (lhs.m_trackCols[i] == rhs.m_trackCols[i]);
             if ((lhs.m_trackCols[i] == rhs.m_trackCols[i]) == false){
                     cout << "track columns value not the same" << endl;
+            } else {
+                cout << "passed" << endl;
             }
         }
 
