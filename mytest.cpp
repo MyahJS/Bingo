@@ -14,6 +14,8 @@ class Tester{
                 result = result && (lhs.m_card[i][j] == rhs.m_card[i][j]);
                 if ((lhs.m_card[i][j] == rhs.m_card[i][j]) == false){
                     cout << "card cell not the same" << endl;
+                } else {
+                    cout << "passed" << endl;
                 }
             }
         }
