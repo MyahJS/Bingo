@@ -273,12 +273,12 @@ int Bingo::play(int numDraws, vector<int> rndBalls){
     for (int i = 0; i < numDraws; i++){
         int current_ball = rndBalls[i];
         if (m_helper[current_ball].getVal() != EMPTYCELL){
-            m_card[m_helper[current_ball].getRow() - 1][m_helper[current_ball].getCol() - 1].setVal(EMPTYCELL);
-            m_trackRows[m_helper[current_ball].getRow() - 1]++;
-            m_trackCols[m_helper[current_ball].getCol() - 1]++;
+            m_card[m_helper[current_ball].getRow()][m_helper[current_ball].getCol()].setVal(EMPTYCELL);
+            m_trackRows[m_helper[current_ball].getRow()]++;
+            m_trackCols[m_helper[current_ball].getCol()]++;
             hits++;
             // check if all cells in row or column are empty
-            if (m_trackRows[m_helper[current_ball].getRow() - 1] == m_numCols || m_trackCols[m_helper[current_ball].getCol() - 1] == m_numRows){ 
+            if (m_trackRows[m_helper[current_ball].getRow()] == m_numCols || m_trackCols[m_helper[current_ball].getCol()] == m_numRows){ 
                 return hits;
             }
         } 
