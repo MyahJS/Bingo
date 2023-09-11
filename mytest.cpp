@@ -84,6 +84,10 @@ int main(){
 
     obj1.dumpCard();
 
+    obj1.reCreateCard(CARDROWS,CARDCOLS,MINVAL,MAXVAL);
+
+    Bingo obj2 = obj1;
+
     // if (obj1.initCard()){
     //     obj1.dumpCard();
     //     cout << "\ngame over after " << obj1.play(BALLS,balls) << " hits!\n" << endl;
