@@ -65,7 +65,8 @@ class Tester{
 
 int main(){
     Tester tester;
-    Bingo obj1(CARDROWS,CARDCOLS,MINVAL,MAXVAL);
+    // Bingo obj1(CARDROWS,CARDCOLS,MINVAL,MAXVAL);
+    Bingo obj1;
     vector<int> balls = obj1.drawBalls();
 
     obj1.initCard();
@@ -86,9 +87,9 @@ int main(){
 
     obj1.reCreateCard(CARDROWS,CARDCOLS,MINVAL,MAXVAL);
 
-    Bingo obj2;
+    // Bingo obj2;
 
-    obj2 = obj1;
+    // obj2 = obj1;
 
     // if (obj1.initCard()){
     //     obj1.dumpCard();
