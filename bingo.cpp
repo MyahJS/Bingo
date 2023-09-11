@@ -273,7 +273,7 @@ int Bingo::play(int numDraws, vector<int> rndBalls){
     for (int i = 0; i < numDraws; i++){
         int current_ball = rndBalls[i];
         if (m_helper[current_ball].getVal() != EMPTYCELL){
-            m_card[m_helper[current_ball].getRow()][m_helper[current_ball].getCol()].setVal(EMPTYCELL);
+            m_card[m_helper[current_ball].getRow() - 1][m_helper[current_ball].getCol() - 1].setVal(EMPTYCELL);
             m_trackRows[m_helper[current_ball].getRow() - 1]++;
             m_trackCols[m_helper[current_ball].getCol() - 1]++;
             hits++;
@@ -290,6 +290,11 @@ const Bingo & Bingo::operator=(const Bingo & rhs){
     // Assignment operator
     // Preconditions: a bingo object has been created
     // Postconditions: returns a deep copy of the specified bingo object
+    if (this == &rhs){
+        return *this;
+    } else {
+        clear();
+    }
 
     m_helperSize = rhs.m_helperSize;
     m_numRows = rhs.m_numRows;
