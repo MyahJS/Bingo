@@ -70,6 +70,8 @@ int main(){
 
     obj1.initCard();
 
+    obj1.dumpCard();
+
     obj1.clear();
 
     obj1.dumpCard();
