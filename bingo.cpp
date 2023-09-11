@@ -10,7 +10,8 @@ Bingo::Bingo(){
     m_trackRows = nullptr;  
     m_helper = nullptr;    
     m_helperSize = 0;
-    m_card = nullptr;     
+    m_card = nullptr;
+    m_numRows = 0;
     m_numCols = 0;
     m_minBallVal = 0;   
     m_maxBallVal = 0;   
@@ -286,37 +287,41 @@ const Bingo & Bingo::operator=(const Bingo & rhs){
     // Assignment operator
     // Preconditions: a bingo object has been created
     // Postconditions: returns a deep copy of the specified bingo object
-    // m_trackCols = nullptr;  
-    // m_trackRows = nullptr;  
-    // m_helper = nullptr;    
-    // m_helperSize = 0;
-    // m_card = nullptr;     
-    // m_numCols = 0;
-    // m_minBallVal = 0;   
-    // m_maxBallVal = 0;
-    Bingo lhs(rhs.m_numRows, rhs.m_numCols, rhs.m_minBallVal, rhs.m_maxBallVal);
-
+    
+    m_helperSize = rhs.m_helperSize;
+    m_numRows = rhs.m_numRows;
+    m_numCols = rhs.m_numCols;
+    m_minBallVal = rhs.m_minBallVal;
+    m_maxBallVal = rhs.m_maxBallVal;
     if (rhs.m_card != nullptr){
+        m_trackCols = new int[m_numCols];
+        m_trackRows = new int[m_numRows];
+        m_helper = new Cell[m_helperSize];
+        m_card = new Cell*[m_numRows];
         for (int i = 0; i < rhs.m_numCols; i++){
-            lhs.m_trackCols[i] = rhs.m_trackCols[i];
+            m_trackCols[i] = rhs.m_trackCols[i];
         }
         for (int i = 0; i < rhs.m_numRows; i++){
-            lhs.m_trackRows[i] = rhs.m_trackRows[i];
+            m_trackRows[i] = rhs.m_trackRows[i];
         }
         for (int i = 0; i < rhs.m_helperSize; i++){
-            lhs.m_helper[i] = rhs.m_helper[i];
+            m_helper[i] = rhs.m_helper[i];
         }
-        for (int i = 0; i < lhs.m_numRows; i++){
-            lhs.m_card[i] = new Cell[lhs.m_numCols];
+        for (int i = 0; i < rhs.m_numRows; i++){
+            m_card[i] = new Cell[m_numCols];
         }
         for (int i = 0; i < rhs.m_numRows; i++){
             for(int j; j < rhs.m_numCols; j++){
-                lhs.m_card[i][j] = lhs.m_card[i][j];
+                m_card[i][j] = rhs.m_card[i][j];
             }
         }
+    } else {
+        m_trackCols = rhs.m_trackCols;
+        m_trackRows = rhs.m_trackRows;
+        m_helper = rhs.m_helper;
+        m_card = rhs.m_card;
     }
-    return lhs;
-    // return *this;
+    return *this;
 }
 
 // The dump function renders the card in the terminal
