@@ -12,6 +12,9 @@ class Tester{
         for (int i=0;i<rhs.m_numRows;i++){
             for (int j=0;j<rhs.m_numCols;j++){
                 result = result && (lhs.m_card[i][j] == rhs.m_card[i][j]);
+                if ((lhs.m_card[i][j] == rhs.m_card[i][j]) == false){
+                    cout << "card cell not the same" << endl;
+                }
             }
         }
 
@@ -19,18 +22,27 @@ class Tester{
         //      m_helper carry the same cell information (exact same copy)
         for (int i=0;i<rhs.m_helperSize;i++){
             result = result && (lhs.m_helper[i] == rhs.m_helper[i]);
+            if ((lhs.m_helper[i] == rhs.m_helper[i]) == false){
+                    cout << "helper cell not the same" << endl;
+            }
         }
 
         // we expect that the corresponding cells in lhs and rhs
         //      m_trackRows carry the same cell information (exact same copy)
         for (int i=0;i<rhs.m_numRows;i++){
             result = result && (lhs.m_trackRows[i] == rhs.m_trackRows[i]);
+            if ((lhs.m_trackRows[i] == rhs.m_trackRows[i]) == false){
+                    cout << "track rows value not the same" << endl;
+            }
         }
 
         // we expect that the corresponding cells in lhs and rhs
         //      m_trackCols carry the same cell information (exact same copy)
         for (int i=0;i<rhs.m_numCols;i++){
             result = result && (lhs.m_trackCols[i] == rhs.m_trackCols[i]);
+            if ((lhs.m_trackCols[i] == rhs.m_trackCols[i]) == false){
+                    cout << "track columns value not the same" << endl;
+            }
         }
 
         result = result && (lhs.m_minBallVal == rhs.m_minBallVal);
@@ -76,6 +88,7 @@ if (obj1.initCard()){
 
     Bingo obj2;
     obj2 = obj1;
+
     // test whether the assignment operator normal case works correctly
     cout << "Following is the test message for testing assignment operator:\n" << endl;
     if (tester.assignmentNormal(obj2,obj1))
