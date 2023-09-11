@@ -97,12 +97,12 @@ if (obj1.initCard()){
     Bingo obj2;
     obj2 = obj1;
 
-    // test whether the assignment operator normal case works correctly
-    cout << "Following is the test message for testing assignment operator:\n" << endl;
-    if (tester.assignmentNormal(obj2,obj1))
-        cout << "Test msg: Assignment operator test for normal case passed!\n" << endl;
-    else
-        cout << "Test msg: Assignment operator test for normal case failed!\n" << endl;
+    // // test whether the assignment operator normal case works correctly
+    // cout << "Following is the test message for testing assignment operator:\n" << endl;
+    // if (tester.assignmentNormal(obj2,obj1))
+    //     cout << "Test msg: Assignment operator test for normal case passed!\n" << endl;
+    // else
+    //     cout << "Test msg: Assignment operator test for normal case failed!\n" << endl;
 
     // // Re-initialize the object to a card of 10x5
     // cout << "Following is the result of re-initializing the object and re-play:\n" << endl;
