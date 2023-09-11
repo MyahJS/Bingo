@@ -319,6 +319,7 @@ const Bingo & Bingo::operator=(const Bingo & rhs){
         for (int i = 0; i < rhs.m_numRows; i++){
             cout << i << endl;
             for(int j; j < rhs.m_numCols; j++){
+                cout << j << endl;
                 m_card[i][j].setVal(rhs.m_card[i][j].getVal());
                 m_card[i][j].setRow(rhs.m_card[i][j].getRow());
                 m_card[i][j].setCol(rhs.m_card[i][j].getCol());
