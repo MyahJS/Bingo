@@ -301,15 +301,15 @@ const Bingo & Bingo::operator=(const Bingo & rhs){
         m_trackRows = new int[m_numRows];
         m_helper = new Cell[m_helperSize];
         m_card = new Cell*[m_numRows];
-        cout << "assigning trackcols..." << endl;
+        // cout << "assigning trackcols..." << endl;
         for (int i = 0; i < rhs.m_numCols; i++){
             m_trackCols[i] = rhs.m_trackCols[i];
         }
-        cout << "assigning trackrows..." << endl;
+        // cout << "assigning trackrows..." << endl;
         for (int i = 0; i < rhs.m_numRows; i++){
             m_trackRows[i] = rhs.m_trackRows[i];
         }
-        cout << "assigning helper cells" << endl;
+        // cout << "assigning helper cells" << endl;
         for (int i = 0; i < rhs.m_helperSize; i++){
             m_helper[i].setVal(rhs.m_helper[i].getVal());
             m_helper[i].setRow(rhs.m_helper[i].getRow());
@@ -318,7 +318,7 @@ const Bingo & Bingo::operator=(const Bingo & rhs){
         for (int i = 0; i < rhs.m_numRows; i++){
             m_card[i] = new Cell[m_numCols];
         }
-        cout << "assigning card cells..." << endl;
+        // cout << "assigning card cells..." << endl;
         for (int i = 0; i < rhs.m_numRows; i++){
             cout << i << endl;
             for(int j = 0; j < rhs.m_numCols; j++){
@@ -326,7 +326,7 @@ const Bingo & Bingo::operator=(const Bingo & rhs){
                 m_card[i][j].setVal(rhs.m_card[i][j].getVal());
                 m_card[i][j].setRow(rhs.m_card[i][j].getRow());
                 m_card[i][j].setCol(rhs.m_card[i][j].getCol());
-                cout << rhs.m_card[i][j].getVal() << "-->" << m_card[i][j].getVal() << endl;
+                // cout << rhs.m_card[i][j].getVal() << "-->" << m_card[i][j].getVal() << endl;
             }
         }
     } else {
