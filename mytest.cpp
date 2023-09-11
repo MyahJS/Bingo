@@ -67,13 +67,15 @@ int main(){
     Tester tester;
     Bingo obj1(CARDROWS,CARDCOLS,MINVAL,MAXVAL);
     vector<int> balls = obj1.drawBalls();
-    if (obj1.initCard()){
-        obj1.dumpCard();
-        cout << "\ngame over after " << obj1.play(BALLS,balls) << " hits!\n" << endl;
-        obj1.dumpCard();
-    } else {
-        obj1.dumpCard();
-    }
+
+
+    // if (obj1.initCard()){
+    //     obj1.dumpCard();
+    //     cout << "\ngame over after " << obj1.play(BALLS,balls) << " hits!\n" << endl;
+    //     obj1.dumpCard();
+    // } else {
+    //     obj1.dumpCard();
+    // }
 
     return 0;
 }
