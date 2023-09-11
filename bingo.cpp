@@ -204,16 +204,19 @@ bool Bingo::reCreateCard(int rows, int columns, int min, int max){
 
 Bingo::~Bingo(){
     // Destructor 
-    // Preconditions: none
+    // Preconditions: a non empty bingo object is created
     // Postconditions: deallocates all dynamically allocated memory
 
-    delete[] m_trackCols;  
-    delete[] m_trackRows;  
-    delete[] m_helper;    
-    for (int i = 0; i < m_numRows; i++){    // deallocate each array within m_card
-        delete[] m_card[i];
+    if (m_card != nullptr){
+        delete[] m_trackCols;  
+        delete[] m_trackRows;  
+        delete[] m_helper;    
+        for (int i = 0; i < m_numRows; i++){    // deallocate each array within m_card
+            delete[] m_card[i];
+        }
+        delete[] m_card;
     }
-    delete[] m_card;     
+         
 }
 
 void Bingo::clear(){
