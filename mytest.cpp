@@ -102,5 +102,12 @@ int main(){
         cout << "Constructor test for normal case failed!" << endl;
     }
 
+    Bingo obj2(-10, -5, MINVAL, MAXVAL);
+    if (tester.constructorTest(obj2, -10, -5, MINVAL, MAXVAL)){
+        cout << "Constructor test for error case passed!" << endl;
+    } else {
+        cout << "Constructor test for error case failed!" << endl;
+    }
+
     return 0;
 }
