@@ -264,7 +264,7 @@ int main(){
     Bingo obj6(CARDROWS,CARDCOLS,MINVAL,MAXVAL);
     if (obj6.initCard()){
         obj6.dumpCard();
-        cout << "\ngame over after " << obj6.play(BALLS,balls) << " hits!" << endl;
+        cout << "\ngame over after " << obj6.play(BALLS,balls) << " hits!\n" << endl;
         obj6.dumpCard();
     }
 
@@ -292,7 +292,7 @@ int main(){
         obj6.initCard();
         obj6.dumpCard();
         balls = obj6.drawBalls();
-        cout << "\ngame over after " << obj6.play(BALLS,balls) << " hits!" << endl;
+        cout << "\ngame over after " << obj6.play(BALLS,balls) << " hits!\n" << endl;
         obj6.dumpCard();
     }
     
