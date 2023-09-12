@@ -128,6 +128,16 @@ int main(){
     Bingo obj1(CARDROWS,CARDCOLS,MINVAL,MAXVAL);
     vector<int> balls = obj1.drawBalls();
 
+    Bingo obj1copy;
+    obj1copy = obj1;
+    // test whether the assignment operator normal case works correctly
+    cout << "Following is the test message for testing assignment operator:\n" << endl;
+    if (tester.assignmentTest(obj1copy,obj1))
+        cout << "Test msg: Assignment operator test for normal case passed!\n" << endl;
+    else
+        cout << "Test msg: Assignment operator test for normal case failed!\n" << endl;
+
+
     //first check constructor for normal and edge case
     cout << endl << "Testing the constructor for a normal case:" << endl;
     if (tester.constructorTest(obj1, CARDROWS, CARDCOLS, MINVAL, MAXVAL)){
@@ -143,9 +153,9 @@ int main(){
         cout << endl << "Constructor test for error case failed!" << endl;
     }
 
-    Bingo obj1copy;
+    // Bingo obj1copy;
     // obj1copy = obj1;
-    obj1.initCard();
+    // obj1.initCard();
     // if (tester.initCardTest(obj1copy, obj1, MINVAL, MAXVAL)){
     //     cout << endl << "InitCard test for error case passed!" << endl;
     // } else {
