@@ -66,6 +66,10 @@ Bingo::Bingo(int rows, int columns, int min, int max){
         m_helper = new Cell[max+1];     // allocate space by max ball value (+1 because 0 index)
         m_helperSize = max + 1;
         m_card = new Cell*[rows];       // allocate space for each column array by number of rows
+        // allocate memory for each array stored in m_card
+        for (int i = 0; i < m_numRows; i++){
+            m_card[i] = new Cell[m_numCols];
+        }
         m_numRows = rows;
         m_numCols = columns;
         m_minBallVal = min;   
@@ -92,11 +96,6 @@ bool Bingo::initCard(){
         Random range3(m_minBallVal+(2*portion), m_minBallVal+(3*portion));
         Random range4(m_minBallVal+(3*portion), m_minBallVal+(4*portion));
         Random range5(m_minBallVal+(4*portion), m_minBallVal+(5*portion));
-
-        // allocate memory for each array stored in m_card
-        for (int i = 0; i < m_numRows; i++){
-            m_card[i] = new Cell[m_numCols];
-        }
 
         // iterate through list and as it goes to each column in the row, 
         //  assign random value from corresponding range
@@ -187,7 +186,10 @@ bool Bingo::reCreateCard(int rows, int columns, int min, int max){
         m_trackRows = new int[rows];  
         m_helper = new Cell[max+1];
         m_helperSize = max + 1;    
-        m_card = new Cell*[rows];     
+        m_card = new Cell*[rows];
+        for (int i = 0; i < m_numRows; i++){
+            m_card[i] = new Cell[m_numCols];
+        }
         m_numRows = rows;
         m_numCols = columns;
         m_minBallVal = min;   
