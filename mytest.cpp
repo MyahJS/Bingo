@@ -144,7 +144,7 @@ int main(){
     }
 
     Bingo obj1copy;
-    obj1copy = obj1;
+    // obj1copy = obj1;
     obj1.initCard();
     // if (tester.initCardTest(obj1copy, obj1, MINVAL, MAXVAL)){
     //     cout << endl << "InitCard test for error case passed!" << endl;
