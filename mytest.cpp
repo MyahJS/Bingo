@@ -56,6 +56,7 @@ class Tester{
             result = result && (obj.m_helper == nullptr);
             result = result && (obj.m_card == nullptr);
         } else {
+            // check that all member ints match the params and all arrays are not null
             result = result && (obj.m_numRows == rows);
             result = result && (obj.m_numCols == cols);
             result = result && (obj.m_helperSize == max + 1);
@@ -69,15 +70,48 @@ class Tester{
         return result;
     }
 
-    bool initCardNormal(Bingo obj, int rows, int cols, int min, int max){
+    bool initCardTest(Bingo & beforeInit, Bingo & afterInit, int min=0, int max=0){
+        bool result = true;
+
+        if (beforeInit.m_card == nullptr){
+            // check that object is still empty
+            result = result && (beforeInit.m_numRows == 0);
+            result = result && (beforeInit.m_numCols == 0);
+            result = result && (beforeInit.m_helperSize == 0);
+            result = result && (beforeInit.m_minBallVal == 0);
+            result = result && (beforeInit.m_maxBallVal == 0);
+            result = result && (beforeInit.m_trackRows == nullptr);
+            result = result && (beforeInit.m_trackCols == nullptr);
+            result = result && (beforeInit.m_helper == nullptr);
+            result = result && (beforeInit.m_card == nullptr);
+        } else {
+            // make sure values in cells are within the correct range
+            int totalRange = max - min + 1;
+            int portion = totalRange / beforeInit.m_numCols;
+            for (int i = 0; i < afterInit.m_numRows; i++){
+                for(int j = 0; j < afterInit.m_numCols; j++){
+                    if (j == 0){
+                        result = result && (min <= afterInit.m_card[i][j].getVal() <= min+portion); 
+                    }else if (j == 1){
+                        result = result && (min+portion <= afterInit.m_card[i][j].getVal() <= min+2*portion);
+                    }else if (j == 2){
+                        result = result && (min+2*portion <= afterInit.m_card[i][j].getVal() <= min+3*portion);
+                    }else if (j == 3){
+                        result = result && (min+3*portion <= afterInit.m_card[i][j].getVal() <= min+4*portion);
+                    }else {
+                        result = result && (min+4*portion <= afterInit.m_card[i][j].getVal() <= min+5*portion);
+                    }
+                }
+            }
+        }
+        return result;
+    }
+
+    bool reCreateCardTest(Bingo obj, int rows, int cols, int min, int max){
         return true;
     }
 
-    bool reCreateCardNormal(Bingo obj, int rows, int cols, int min, int max){
-        return true;
-    }
-
-    bool playNormal(Bingo obj, int numDraws, vector<int> rndBalls){
+    bool playTest(Bingo obj, int numDraws, vector<int> rndBalls){
         return true;
     }
 
@@ -95,7 +129,7 @@ int main(){
     vector<int> balls = obj1.drawBalls();
 
     //first check constructor for normal and edge case
-    cout << "Testing the constructor for a normal case:" << endl;
+    cout << endl << "Testing the constructor for a normal case:" << endl;
     if (tester.constructorTest(obj1, CARDROWS, CARDCOLS, MINVAL, MAXVAL)){
         cout << endl << "Constructor test for normal case passed!" << endl;
     } else {
@@ -107,6 +141,24 @@ int main(){
         cout << endl << "Constructor test for error case passed!" << endl;
     } else {
         cout << endl << "Constructor test for error case failed!" << endl;
+    }
+
+    Bingo obj1copy;
+    obj1copy = obj1;
+    obj1.initCard();
+    if (tester.initCardTest(obj1copy, obj1, MINVAL, MAXVAL)){
+        cout << endl << "InitCard test for error case passed!" << endl;
+    } else {
+        cout << endl << "InitCard test for error case failed!" << endl;
+    }
+
+    Bingo obj2copy;
+    obj2copy = obj2;
+    obj2.initCard();
+    if (tester.initCardTest(obj2copy, obj2)){
+        cout << endl << "InitCard test for error case passed!" << endl;
+    } else {
+        cout << endl << "InitCard test for error case failed!" << endl;
     }
 
     return 0;
