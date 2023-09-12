@@ -134,6 +134,7 @@ int main(){
     //     obj1.dumpCard();
     // }
 
+    obj1.initCard();
     Bingo obj2;
     obj2 = obj1;
     // test whether the assignment operator normal case works correctly
