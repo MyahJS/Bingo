@@ -260,5 +260,43 @@ int main(){
         cout << endl << "Play test for error case failed!" << endl; 
     }
 
+    Bingo obj6(CARDROWS,CARDCOLS,MINVAL,MAXVAL);
+    if (obj6.initCard()){
+        obj6.dumpCard();
+        cout << "\ngame over after " << obj6.play(BALLS,balls) << " hits!\n" << endl;
+        obj6.dumpCard();
+    }
+
+    Bingo obj7;
+    obj7 = obj6;
+    cout << endl << "Testing assignment operator for a normal case" << endl;
+    if (tester.assignmentTest(obj7, obj6)){
+        cout << endl << "Assignment test for normal case passed!" << endl;
+    } else {
+        cout << endl << "Assignment test for normal case passed!" << endl;
+    }
+    obj6.clear();
+
+    Bingo obj8(CARDROWS,CARDCOLS,MINVAL,MAXVAL);
+    obj8 = obj6;
+    cout << endl << "Testing assignment operator for an error case" << endl;
+    if (tester.assignmentTest(obj8, obj6)){
+        cout << endl << "Assignment test for error case passed!" << endl;
+    } else {
+        cout << endl << "Assignment test for error case passed!" << endl;
+    }
+
+    cout << endl << "Following is the result of re-initializing the object and re-play:\n" << endl;
+    if (obj6.reCreateCard(2*CARDROWS,CARDCOLS,MINVAL,MAXVAL)){
+        obj6.initCard();
+        obj6.dumpCard();
+        balls = obj6.drawBalls();
+        cout << "\ngame over after " << obj6.play(BALLS,balls) << " hits!\n" << endl;
+        obj6.dumpCard();
+    }
+    
+    cout << "The following is the dump of object created by overloaded assignment operator:\n" << endl;
+    obj7.dumpCard();
+
     return 0;
 }
