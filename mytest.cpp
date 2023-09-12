@@ -150,7 +150,7 @@ class Tester{
         return result;
     }
 
-    bool playTest(Bingo obj, int hits, int numDraws, vector<int> rndBalls){
+    bool playTest(Bingo & obj, int hits, int numDraws, vector<int> rndBalls){
         bool result = true;
         
         // check that game doesn't do any draws if numDraws is greater than the maximum ball value
