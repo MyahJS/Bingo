@@ -97,16 +97,16 @@ int main(){
     //first check constructor for normal and edge case
     cout << "Testing the constructor for a normal case:" << endl;
     if (tester.constructorTest(obj1, CARDROWS, CARDCOLS, MINVAL, MAXVAL)){
-        cout << "Constructor test for normal case passed!" << endl;
+        cout << endl << "Constructor test for normal case passed!" << endl;
     } else {
-        cout << "Constructor test for normal case failed!" << endl;
+        cout << endl << "Constructor test for normal case failed!" << endl;
     }
 
     Bingo obj2(-10, -5, MINVAL, MAXVAL);
     if (tester.constructorTest(obj2, -10, -5, MINVAL, MAXVAL)){
-        cout << "Constructor test for error case passed!" << endl;
+        cout << endl << "Constructor test for error case passed!" << endl;
     } else {
-        cout << "Constructor test for error case failed!" << endl;
+        cout << endl << "Constructor test for error case failed!" << endl;
     }
 
     return 0;
