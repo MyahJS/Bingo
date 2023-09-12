@@ -67,8 +67,8 @@ Bingo::Bingo(int rows, int columns, int min, int max){
         m_helperSize = max + 1;
         m_card = new Cell*[rows];       // allocate space for each column array by number of rows
         // allocate memory for each array stored in m_card
-        for (int i = 0; i < m_numRows; i++){
-            m_card[i] = new Cell[m_numCols];
+        for (int i = 0; i < rows; i++){
+            m_card[i] = new Cell[columns];
         }
         m_numRows = rows;
         m_numCols = columns;
@@ -187,8 +187,8 @@ bool Bingo::reCreateCard(int rows, int columns, int min, int max){
         m_helper = new Cell[max+1];
         m_helperSize = max + 1;    
         m_card = new Cell*[rows];
-        for (int i = 0; i < m_numRows; i++){
-            m_card[i] = new Cell[m_numCols];
+        for (int i = 0; i < rows; i++){
+            m_card[i] = new Cell[columns];
         }
         m_numRows = rows;
         m_numCols = columns;
