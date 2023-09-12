@@ -39,7 +39,7 @@ class Tester{
         return result;
     }
 
-    bool constructorTest(Bingo obj, int rows, int cols, int min, int max){
+    bool constructorTest(Bingo & obj, int rows, int cols, int min, int max){
         // check that, if all params are valid, an object is created that matches those params
         // else check that an empty object is created
         bool result = true;
