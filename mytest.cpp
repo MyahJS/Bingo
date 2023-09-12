@@ -137,24 +137,25 @@ int main(){
     }
 
     Bingo obj2(-10, -5, MINVAL, MAXVAL);
+    cout << endl << "Testing the constructor for an error case:" << endl;
     if (tester.constructorTest(obj2, -10, -5, MINVAL, MAXVAL)){
         cout << endl << "Constructor test for error case passed!" << endl;
     } else {
         cout << endl << "Constructor test for error case failed!" << endl;
     }
 
-    Bingo obj1copy;
+    Bingo obj1copy(CARDROWS,CARDCOLS,MINVAL,MAXVAL);
     obj1.initCard();
-    obj1copy = obj1;
+    cout << endl << "Testing initCard for a normal case:" << endl;
     if (tester.initCardTest(obj1copy, obj1, MINVAL, MAXVAL)){
-        cout << endl << "InitCard test for error case passed!" << endl;
+        cout << endl << "InitCard test for normal case passed!" << endl;
     } else {
-        cout << endl << "InitCard test for error case failed!" << endl;
+        cout << endl << "InitCard test for normal case failed!" << endl;
     }
 
     Bingo obj2copy;
     obj2.initCard();
-    obj2copy = obj2;
+    cout << endl << "Testing initCard for an error case:" << endl;
     if (tester.initCardTest(obj2copy, obj2)){
         cout << endl << "InitCard test for error case passed!" << endl;
     } else {
