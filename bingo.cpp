@@ -29,7 +29,7 @@ Bingo::Bingo(int rows, int columns, int min, int max){
     //  requirements: 2-15 rows, 5 columns, min at least 11, max - min + 1 must div by 5
 
     if (2 > rows || rows > 15){
-        cout << "Invalid number of rows. Creating empty object..." << endl;
+        cout << endl << "Invalid number of rows. Creating empty object..." << endl;
         m_trackCols = nullptr;  
         m_trackRows = nullptr;  
         m_helper = nullptr;    
@@ -40,7 +40,7 @@ Bingo::Bingo(int rows, int columns, int min, int max){
         m_minBallVal = 0;   
         m_maxBallVal = 0;   
     } else if (columns != 5){
-        cout << "Invalid number of columns. Creating empty object..." << endl;
+        cout << endl << "Invalid number of columns. Creating empty object..." << endl;
         m_trackCols = nullptr;  
         m_trackRows = nullptr;  
         m_helper = nullptr;    
@@ -51,7 +51,7 @@ Bingo::Bingo(int rows, int columns, int min, int max){
         m_minBallVal = 0;   
         m_maxBallVal = 0;      
     } else if (min < 1 || max > 90 || (max - min + 1) % 5 != 0){
-        cout << "Invalid number of balls. Creating empty object..." << endl;
+        cout << endl << "Invalid number of balls. Creating empty object..." << endl;
         m_trackCols = nullptr;  
         m_trackRows = nullptr; 
         m_helper = nullptr;    
@@ -62,7 +62,7 @@ Bingo::Bingo(int rows, int columns, int min, int max){
         m_minBallVal = 0;   
         m_maxBallVal = 0;  
     } else {
-        cout << "Initialization successfull. Creating bingo object..." << endl;
+        cout << endl << "Initialization successfull. Creating bingo object..." << endl;
         m_trackCols = new int[columns]; // allocate space by number of columns  
         m_trackRows = new int[rows];    // allocate space by number of rows
         m_helper = new Cell[max+1];     // allocate space by max ball value (+1 because 0 index)
