@@ -143,9 +143,9 @@ int main(){
         cout << endl << "Constructor test for error case failed!" << endl;
     }
 
-    // Bingo obj1copy;
-    // obj1copy = obj1;
-    // obj1.initCard();
+    Bingo obj1copy;
+    obj1copy = obj1;
+    obj1.initCard();
     // if (tester.initCardTest(obj1copy, obj1, MINVAL, MAXVAL)){
     //     cout << endl << "InitCard test for error case passed!" << endl;
     // } else {
