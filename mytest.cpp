@@ -150,7 +150,7 @@ class Tester{
         return result;
     }
 
-    bool playTest(Bingo & obj, int hits, int numDraws, vector<int> rndBalls){
+    bool playTest(Bingo &obj, int hits, int numDraws, vector<int> rndBalls){
         bool result = true;
         
         // check that game doesn't do any draws if numDraws is greater than the maximum ball value
@@ -225,7 +225,7 @@ int main(){
     obj3.clear();
     obj3.reCreateCard(2*CARDROWS,CARDCOLS,MINVAL,MAXVAL);
     cout << endl << "Testing reCreateCard for a normal case:" << endl;
-    if (tester.reCreateCardTest(obj3, CARDROWS, CARDCOLS, MINVAL, MAXVAL)){
+    if (tester.reCreateCardTest(obj3, 2*CARDROWS, CARDCOLS, MINVAL, MAXVAL)){
         cout << endl << "ReCreateCard test for normal case passed!" << endl;
     } else {
         cout << endl << "ReCreateCard test for normal case failed!" << endl; 
