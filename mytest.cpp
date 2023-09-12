@@ -107,7 +107,7 @@ class Tester{
         return result;
     }
 
-    bool reCreateCardTest(Bingo obj, int rows, int cols, int min, int max){
+    bool reCreateCardTest(Bingo & obj, int rows, int cols, int min, int max){
         bool result = true;
 
         if ((2 > rows || rows > 15 ) || (cols != 5) || (min < 1 || max > 90 || (max - min + 1) % 5 != 0)){
