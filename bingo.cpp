@@ -66,6 +66,7 @@ Bingo::Bingo(int rows, int columns, int min, int max){
         m_helper = new Cell[max+1];     // allocate space by max ball value (+1 because 0 index)
         m_helperSize = max + 1;
         m_card = new Cell*[rows];       // allocate space for each column array by number of rows
+        
         m_numRows = rows;
         m_numCols = columns;
         m_minBallVal = min;   

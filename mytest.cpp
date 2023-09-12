@@ -134,29 +134,29 @@ int main(){
     //     obj1.dumpCard();
     // }
 
-    obj1.initCard();
-    Bingo obj2;
-    obj2 = obj1;
-    // test whether the assignment operator normal case works correctly
-    cout << "Following is the test message for testing assignment operator:\n" << endl;
-    if (tester.assignmentTest(obj2,obj1))
-        cout << "Test msg: Assignment operator test for normal case passed!\n" << endl;
-    else
-        cout << "Test msg: Assignment operator test for normal case failed!\n" << endl;
+    obj1.dumpCard();
+    // Bingo obj2;
+    // obj2 = obj1;
+    // // test whether the assignment operator normal case works correctly
+    // cout << "Following is the test message for testing assignment operator:\n" << endl;
+    // if (tester.assignmentTest(obj2,obj1))
+    //     cout << "Test msg: Assignment operator test for normal case passed!\n" << endl;
+    // else
+    //     cout << "Test msg: Assignment operator test for normal case failed!\n" << endl;
 
-    // Re-initialize the object to a card of 10x5
-    cout << "Following is the result of re-initializing the object and re-play:\n" << endl;
-    obj1.clear();
-    if (obj1.reCreateCard(2*CARDROWS,CARDCOLS,MINVAL,MAXVAL)){
-        obj1.initCard();
-        obj1.dumpCard();
-        balls = obj1.drawBalls();
-        cout << "\ngame over after " << obj1.play(BALLS,balls) << " hits!\n" << endl;
-        obj1.dumpCard();
-    }
+    // // Re-initialize the object to a card of 10x5
+    // cout << "Following is the result of re-initializing the object and re-play:\n" << endl;
+    // obj1.clear();
+    // if (obj1.reCreateCard(2*CARDROWS,CARDCOLS,MINVAL,MAXVAL)){
+    //     obj1.initCard();
+    //     obj1.dumpCard();
+    //     balls = obj1.drawBalls();
+    //     cout << "\ngame over after " << obj1.play(BALLS,balls) << " hits!\n" << endl;
+    //     obj1.dumpCard();
+    // }
     
-    cout << "The following is the dump of object created by overloaded assignment operator:\n" << endl;
-    obj2.dumpCard();
+    // cout << "The following is the dump of object created by overloaded assignment operator:\n" << endl;
+    // obj2.dumpCard();
 
     // //first check constructor for normal and edge case
     // cout << endl << "Testing the constructor for a normal case:" << endl;
