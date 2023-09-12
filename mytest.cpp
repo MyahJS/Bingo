@@ -150,8 +150,28 @@ class Tester{
         return result;
     }
 
-    bool playTest(Bingo obj, int numDraws, vector<int> rndBalls){
-        return true;
+    bool playTest(Bingo obj, int hits, int numDraws, vector<int> rndBalls){
+        bool result = true;
+        
+        // check that game doesn't do any draws if numDraws is greater than the maximum ball value
+        if (numDraws > obj.m_maxBallVal) {
+            result = result && (hits == 0);
+        } else {
+        // check that if game plays normally, a bingo is achieved
+            bool win = false;
+            for (int i = 0; i < obj.m_numRows; i++){
+                if (obj.m_trackRows[i]==obj.m_numCols){
+                    win = true;
+                }
+            }
+            for (int i = 0; i < obj.m_numCols; i++){
+                if (obj.m_trackCols[i]==obj.m_numRows){
+                    win = true;
+                }
+            }
+            result = result && win;
+        }
+        return result;
     }
 
     private:
@@ -218,6 +238,26 @@ int main(){
         cout << endl << "ReCreateCard test for error case passed!" << endl;
     } else {
         cout << endl << "ReCreateCard test for error case failed!" << endl; 
+    }
+
+    Bingo obj4(CARDROWS,CARDCOLS,MINVAL,MAXVAL);
+    obj4.initCard();
+    int hits = obj4.play(BALLS,balls);
+    cout << endl << "Testing play for a normal case:" << endl;
+    if (tester.playTest(obj4, hits, BALLS, balls)){
+        cout << endl << "Play test for normal case passed!" << endl;
+    } else {
+        cout << endl << "Play test for normal case failed!" << endl; 
+    }
+
+    Bingo obj5(CARDROWS,CARDCOLS,MINVAL,MAXVAL);
+    obj5.initCard();
+    hits = obj5.play(1000,balls);
+    cout << endl << "Testing play for an error case:" << endl;
+    if (tester.playTest(obj4, hits, 1000, balls)){
+        cout << endl << "Play test for error case passed!" << endl;
+    } else {
+        cout << endl << "Play test for error case failed!" << endl; 
     }
 
     return 0;

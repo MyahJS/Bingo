@@ -5,7 +5,7 @@ Bingo::Bingo(){
     // Preconditions: bingo object created with no params
     // Postconditions: generates empty bingo object
     //  any dynamic arrays set to nullptr, and any ints set to 0
-    
+
     cout << endl << "Creating empty object..." << endl;
 
     m_trackCols = nullptr;  
@@ -273,6 +273,10 @@ int Bingo::play(int numDraws, vector<int> rndBalls){
     //  return the number of hits when game ends
 
     int hits = 0;   // to keep track of the hits
+
+    if (numDraws > m_maxBallVal) {
+        return hits;
+    }
 
     for (int i = 0; i < numDraws; i++){
         int current_ball = rndBalls[i];
