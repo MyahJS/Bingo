@@ -61,28 +61,11 @@ Bingo::Bingo(int rows, int columns, int min, int max){
         m_maxBallVal = 0;  
     } else {
         cout << "Initialization successfull. Creating bingo object..." << endl;
-        m_trackCols = new int[columns]; // allocate space by number of columns
-        for (int i = 0; i < m_numCols; i++){
-            m_trackCols[i] = 0;
-        }  
+        m_trackCols = new int[columns]; // allocate space by number of columns  
         m_trackRows = new int[rows];    // allocate space by number of rows
-        for (int i = 0; i < m_numRows; i++){
-            m_trackRows[i] = 0;
-        }
         m_helper = new Cell[max+1];     // allocate space by max ball value (+1 because 0 index)
         m_helperSize = max + 1;
         m_card = new Cell*[rows];       // allocate space for each column array by number of rows
-        // allocate memory for each array stored in m_card
-        for (int i = 0; i < m_numRows; i++){
-            m_card[i] = new Cell[m_numCols];
-        }
-        for (int i = 0; i < m_numRows; i++){
-            for(int j = 0; j < m_numCols; j++){
-                m_card[i][j].setVal(EMPTYCELL);
-                m_card[i][j].setRow(i);
-                m_card[i][j].setCol(j);
-            }
-        }
         m_numRows = rows;
         m_numCols = columns;
         m_minBallVal = min;   
@@ -110,6 +93,11 @@ bool Bingo::initCard(){
         Random range4(m_minBallVal+(3*portion), m_minBallVal+(4*portion));
         Random range5(m_minBallVal+(4*portion), m_minBallVal+(5*portion));
 
+        // allocate memory for each array stored in m_card
+        for (int i = 0; i < m_numRows; i++){
+            m_card[i] = new Cell[m_numCols];
+        }
+
         // iterate through list and as it goes to each column in the row, 
         //  assign random value from corresponding range
         for (int i = 0; i < m_numRows; i++){
@@ -125,12 +113,23 @@ bool Bingo::initCard(){
                 }else {
                     m_card[i][j].setVal(range5.getRandNum());
                 }
+                // also set the row and column numbers for each cell
+                m_card[i][j].setRow(i);
+                m_card[i][j].setCol(j);
                 // and set the cell values and row and column numbers
                 //  for the corresponding cell in m_helper
                 m_helper[m_card[i][j].getVal()].setVal(m_card[i][j].getVal());
                 m_helper[m_card[i][j].getVal()].setRow(i);
                 m_helper[m_card[i][j].getVal()].setCol(j);
             }
+        }
+        
+        // populate tracker arrays with 0s
+        for (int i = 0; i < m_numRows; i++){
+            m_trackRows[i] = 0;
+        }
+        for (int i = 0; i < m_numCols; i++){
+            m_trackCols[i] = 0;
         }
         // return true to indicate card has been initialized
         return true;
@@ -330,7 +329,6 @@ const Bingo & Bingo::operator=(const Bingo & rhs){
                 m_card[i][j].setVal(rhs.m_card[i][j].getVal());
                 m_card[i][j].setRow(rhs.m_card[i][j].getRow());
                 m_card[i][j].setCol(rhs.m_card[i][j].getCol());
-                cout << rhs.m_card[i][j].getVal() << "-->" << m_card[i][j].getVal() << endl;
             }
         }
     } else {
