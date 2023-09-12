@@ -260,6 +260,7 @@ int main(){
         cout << endl << "Play test for error case failed!" << endl; 
     }
 
+    cout << endl << "The following is a dump of a newly initialized and played bingo card:" << endl;
     Bingo obj6(CARDROWS,CARDCOLS,MINVAL,MAXVAL);
     if (obj6.initCard()){
         obj6.dumpCard();
