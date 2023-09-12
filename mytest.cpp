@@ -3,7 +3,7 @@
 class Tester{
     public:
 
-    bool assignmentNormal(Bingo & lhs, Bingo & rhs){
+    bool assignmentTest(Bingo & lhs, Bingo & rhs){
         // we expect that lhs object is an exact copy of rhs object 
         bool result = true;
 
@@ -12,11 +12,6 @@ class Tester{
         for (int i=0;i<rhs.m_numRows;i++){
             for (int j=0;j<rhs.m_numCols;j++){
                 result = result && (lhs.m_card[i][j] == rhs.m_card[i][j]);
-                // if ((lhs.m_card[i][j] == rhs.m_card[i][j]) == false){
-                //     cout << "card cell not the same" << endl;
-                // } else {
-                //     cout << "passed" << endl;
-                // }
             }
         }
 
@@ -24,33 +19,18 @@ class Tester{
         //      m_helper carry the same cell information (exact same copy)
         for (int i=0;i<rhs.m_helperSize;i++){
             result = result && (lhs.m_helper[i] == rhs.m_helper[i]);
-            // if ((lhs.m_helper[i] == rhs.m_helper[i]) == false){
-            //         cout << "helper cell not the same" << endl;
-            // } else {
-            //     cout << "passed" << endl;
-            // }
         }
 
         // we expect that the corresponding cells in lhs and rhs
         //      m_trackRows carry the same cell information (exact same copy)
         for (int i=0;i<rhs.m_numRows;i++){
             result = result && (lhs.m_trackRows[i] == rhs.m_trackRows[i]);
-            // if ((lhs.m_trackRows[i] == rhs.m_trackRows[i]) == false){
-            //         cout << "track rows value not the same" << endl;
-            // } else {
-            //     cout << "passed" << endl;
-            // }
         }
 
         // we expect that the corresponding cells in lhs and rhs
         //      m_trackCols carry the same cell information (exact same copy)
         for (int i=0;i<rhs.m_numCols;i++){
             result = result && (lhs.m_trackCols[i] == rhs.m_trackCols[i]);
-            // if ((lhs.m_trackCols[i] == rhs.m_trackCols[i]) == false){
-            //         cout << "track columns value not the same" << endl;
-            // } else {
-            //     cout << "passed" << endl;
-            // }
         }
 
         result = result && (lhs.m_minBallVal == rhs.m_minBallVal);
@@ -59,8 +39,34 @@ class Tester{
         return result;
     }
 
-    bool constructorNormal(Bingo obj, int rows, int cols, int min, int max){
-        return true;
+    bool constructorTest(Bingo obj, int rows, int cols, int min, int max){
+        // check that, if all params are valid, an object is created that matches those params
+        // else check that an empty object is created
+        bool result = true;
+
+        if ((2 > rows || rows > 15 ) || (cols != 5) || (min < 1 || max > 90 || (max - min + 1) % 5 != 0)){
+            // check that all ints are 0 and all arrays are nullptr
+            result = result && (obj.m_numRows == 0);
+            result = result && (obj.m_numCols == 0);
+            result = result && (obj.m_helperSize == 0);
+            result = result && (obj.m_minBallVal == 0);
+            result = result && (obj.m_maxBallVal == 0);
+            result = result && (obj.m_trackRows == nullptr);
+            result = result && (obj.m_trackCols == nullptr);
+            result = result && (obj.m_helper == nullptr);
+            result = result && (obj.m_card == nullptr);
+        } else {
+            result = result && (obj.m_numRows == rows);
+            result = result && (obj.m_numCols == cols);
+            result = result && (obj.m_helperSize == max + 1);
+            result = result && (obj.m_minBallVal == min);
+            result = result && (obj.m_maxBallVal == max);
+            result = result && (obj.m_trackRows != nullptr);
+            result = result && (obj.m_trackCols != nullptr);
+            result = result && (obj.m_helper != nullptr);
+            result = result && (obj.m_card != nullptr);
+        }
+        return result;
     }
 
     bool initCardNormal(Bingo obj, int rows, int cols, int min, int max){
@@ -88,35 +94,13 @@ int main(){
     Bingo obj1(CARDROWS,CARDCOLS,MINVAL,MAXVAL);
     vector<int> balls = obj1.drawBalls();
 
-    if (obj1.initCard()){
-        obj1.dumpCard();
-        cout << "\ngame over after " << obj1.play(BALLS,balls) << " hits!\n" << endl;
-        obj1.dumpCard();
+    //first check constructor for normal and edge case
+    cout << "Testing the constructor for a normal case:" << endl;
+    if (tester.constructorTest(obj1, CARDROWS, CARDCOLS, MINVAL, MAXVAL)){
+        cout << "Constructor test for normal case passed!" << endl;
+    } else {
+        cout << "Constructor test for normal case failed!" << endl;
     }
-
-    Bingo obj2;
-    obj2 = obj1;
-    // test whether the assignment operator normal case works correctly
-    cout << "Following is the test message for testing assignment operator:\n" << endl;
-    if (tester.assignmentNormal(obj2,obj1))
-        cout << "Test msg: Assignment operator test for normal case passed!\n" << endl;
-    else
-        cout << "Test msg: Assignment operator test for normal case failed!\n" << endl;
-
-        // Re-initialize the object to a card of 10x5
-    cout << "Following is the result of re-initializing the object and re-play:\n" << endl;
-    obj1.clear();
-    if (obj1.reCreateCard(2*CARDROWS,CARDCOLS,MINVAL,MAXVAL)){
-        obj1.initCard();
-        obj1.dumpCard();
-        balls = obj1.drawBalls();
-        cout << "\ngame over after " << obj1.play(BALLS,balls) << " hits!\n" << endl;
-        obj1.dumpCard();
-    }
-    
-    cout << "The following is the dump of object created by overloaded assignment operator:\n" << endl;
-    obj2.dumpCard();
-
 
     return 0;
 }
