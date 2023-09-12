@@ -108,7 +108,46 @@ class Tester{
     }
 
     bool reCreateCardTest(Bingo obj, int rows, int cols, int min, int max){
-        return true;
+        bool result = true;
+
+        if ((2 > rows || rows > 15 ) || (cols != 5) || (min < 1 || max > 90 || (max - min + 1) % 5 != 0)){
+            // check that all ints are 0 and all arrays are nullptr
+            result = result && (obj.m_numRows == 0);
+            result = result && (obj.m_numCols == 0);
+            result = result && (obj.m_helperSize == 0);
+            result = result && (obj.m_minBallVal == 0);
+            result = result && (obj.m_maxBallVal == 0);
+            result = result && (obj.m_trackRows == nullptr);
+            result = result && (obj.m_trackCols == nullptr);
+            result = result && (obj.m_helper == nullptr);
+            result = result && (obj.m_card == nullptr);
+        } else {
+            // check that all member ints match the params
+            result = result && (obj.m_numRows == rows);
+            result = result && (obj.m_numCols == cols);
+            result = result && (obj.m_helperSize == max + 1);
+            result = result && (obj.m_minBallVal == min);
+            result = result && (obj.m_maxBallVal == max);
+            // make sure values in cells are within the correct range
+            int totalRange = max - min + 1;
+            int portion = totalRange / obj.m_numCols;
+            for (int i = 0; i < obj.m_numRows; i++){
+                for(int j = 0; j < obj.m_numCols; j++){
+                    if (j == 0){
+                        result = result && (min <= obj.m_card[i][j].getVal() <= min+portion); 
+                    }else if (j == 1){
+                        result = result && (min+portion <= obj.m_card[i][j].getVal() <= min+2*portion);
+                    }else if (j == 2){
+                        result = result && (min+2*portion <= obj.m_card[i][j].getVal() <= min+3*portion);
+                    }else if (j == 3){
+                        result = result && (min+3*portion <= obj.m_card[i][j].getVal() <= min+4*portion);
+                    }else {
+                        result = result && (min+4*portion <= obj.m_card[i][j].getVal() <= min+5*portion);
+                    }
+                }
+            }
+        }
+        return result;
     }
 
     bool playTest(Bingo obj, int numDraws, vector<int> rndBalls){
@@ -160,6 +199,25 @@ int main(){
         cout << endl << "InitCard test for error case passed!" << endl;
     } else {
         cout << endl << "InitCard test for error case failed!" << endl;
+    }
+
+    Bingo obj3(CARDROWS,CARDCOLS,MINVAL,MAXVAL);
+    obj3.clear();
+    obj3.reCreateCard(2*CARDROWS,CARDCOLS,MINVAL,MAXVAL);
+    cout << endl << "Testing reCreateCard for a normal case:" << endl;
+    if (tester.reCreateCardTest(obj3, CARDROWS, CARDCOLS, MINVAL, MAXVAL)){
+        cout << endl << "ReCreateCard test for normal case passed!" << endl;
+    } else {
+        cout << endl << "ReCreateCard test for normal case failed!" << endl; 
+    }
+
+    obj3.clear();
+    obj3.reCreateCard(2*CARDROWS,CARDCOLS,-10,1000);
+    cout << endl << "Testing reCreateCard for an error case:" << endl;
+    if (tester.reCreateCardTest(obj3, CARDROWS, CARDCOLS, -10, 1000)){
+        cout << endl << "ReCreateCard test for error case passed!" << endl;
+    } else {
+        cout << endl << "ReCreateCard test for error case failed!" << endl; 
     }
 
     return 0;

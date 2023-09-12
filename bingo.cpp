@@ -5,6 +5,8 @@ Bingo::Bingo(){
     // Preconditions: bingo object created with no params
     // Postconditions: generates empty bingo object
     //  any dynamic arrays set to nullptr, and any ints set to 0
+    
+    cout << endl << "Creating empty object..." << endl;
 
     m_trackCols = nullptr;  
     m_trackRows = nullptr;  
@@ -148,7 +150,7 @@ bool Bingo::reCreateCard(int rows, int columns, int min, int max){
 
     bool valid = false; // keep track of whether the function successfully executes
     if (2 > rows || rows > 15 ){
-        cout << "Invalid number of rows. Creating empty object..." << endl;
+        cout << endl << "Invalid number of rows. Creating empty object..." << endl;
         m_trackCols = nullptr;  
         m_trackRows = nullptr;  
         m_helper = nullptr;    
@@ -159,7 +161,7 @@ bool Bingo::reCreateCard(int rows, int columns, int min, int max){
         m_minBallVal = 0;   
         m_maxBallVal = 0;   
     } else if (columns != 5){
-        cout << "Invalid number of columns. Creating empty object..." << endl;
+        cout << endl << "Invalid number of columns. Creating empty object..." << endl;
         m_trackCols = nullptr;  
         m_trackRows = nullptr;  
         m_helper = nullptr;    
@@ -170,7 +172,7 @@ bool Bingo::reCreateCard(int rows, int columns, int min, int max){
         m_minBallVal = 0;   
         m_maxBallVal = 0;   
     } else if (min < 1 || max > 90 || (max - min + 1) % 5 != 0){
-        cout << "Invalid number of balls. Creating empty object..." << endl;
+        cout << endl << "Invalid number of balls. Creating empty object..." << endl;
         m_trackCols = nullptr;  
         m_trackRows = nullptr; 
         m_helper = nullptr;    
@@ -181,7 +183,7 @@ bool Bingo::reCreateCard(int rows, int columns, int min, int max){
         m_minBallVal = 0;   
         m_maxBallVal = 0; 
     } else {
-        cout << "Initialization successfull. Creating bingo object..." << endl;
+        cout << endl << "Initialization successfull. Creating bingo object..." << endl;
         m_trackCols = new int[columns]; 
         m_trackRows = new int[rows];  
         m_helper = new Cell[max+1];
@@ -308,15 +310,15 @@ const Bingo & Bingo::operator=(const Bingo & rhs){
         m_trackRows = new int[m_numRows];
         m_helper = new Cell[m_helperSize];
         m_card = new Cell*[m_numRows];
-        // cout << "assigning trackcols..." << endl;
+
         for (int i = 0; i < rhs.m_numCols; i++){
             m_trackCols[i] = rhs.m_trackCols[i];
         }
-        // cout << "assigning trackrows..." << endl;
+
         for (int i = 0; i < rhs.m_numRows; i++){
             m_trackRows[i] = rhs.m_trackRows[i];
         }
-        // cout << "assigning helper cells" << endl;
+
         for (int i = 0; i < rhs.m_helperSize; i++){
             m_helper[i].setVal(rhs.m_helper[i].getVal());
             m_helper[i].setRow(rhs.m_helper[i].getRow());
@@ -325,7 +327,7 @@ const Bingo & Bingo::operator=(const Bingo & rhs){
         for (int i = 0; i < rhs.m_numRows; i++){
             m_card[i] = new Cell[m_numCols];
         }
-        // cout << "assigning card cells..." << endl;
+
         for (int i = 0; i < rhs.m_numRows; i++){
             for(int j = 0; j < rhs.m_numCols; j++){
                 m_card[i][j].setVal(rhs.m_card[i][j].getVal());
