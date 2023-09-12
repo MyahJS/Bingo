@@ -190,35 +190,35 @@ int main(){
     //first check constructor for normal and edge case
     cout << endl << "Testing the constructor for a normal case:" << endl;
     if (tester.constructorTest(obj1, CARDROWS, CARDCOLS, MINVAL, MAXVAL)){
-        cout << endl << "Constructor test for normal case passed!" << endl;
+        cout << "Constructor test for normal case passed!" << endl;
     } else {
-        cout << endl << "Constructor test for normal case failed!" << endl;
+        cout << "Constructor test for normal case failed!" << endl;
     }
 
     Bingo obj2(-10, -5, MINVAL, MAXVAL);
     cout << endl << "Testing the constructor for an error case:" << endl;
     if (tester.constructorTest(obj2, -10, -5, MINVAL, MAXVAL)){
-        cout << endl << "Constructor test for error case passed!" << endl;
+        cout << "Constructor test for error case passed!" << endl;
     } else {
-        cout << endl << "Constructor test for error case failed!" << endl;
+        cout << "Constructor test for error case failed!" << endl;
     }
 
     Bingo obj1copy(CARDROWS,CARDCOLS,MINVAL,MAXVAL);
     obj1.initCard();
     cout << endl << "Testing initCard for a normal case:" << endl;
     if (tester.initCardTest(obj1copy, obj1, MINVAL, MAXVAL)){
-        cout << endl << "InitCard test for normal case passed!" << endl;
+        cout << "InitCard test for normal case passed!" << endl;
     } else {
-        cout << endl << "InitCard test for normal case failed!" << endl;
+        cout << "InitCard test for normal case failed!" << endl;
     }
 
     Bingo obj2copy;
     obj2.initCard();
     cout << endl << "Testing initCard for an error case:" << endl;
     if (tester.initCardTest(obj2copy, obj2)){
-        cout << endl << "InitCard test for error case passed!" << endl;
+        cout << "InitCard test for error case passed!" << endl;
     } else {
-        cout << endl << "InitCard test for error case failed!" << endl;
+        cout << "InitCard test for error case failed!" << endl;
     }
 
     Bingo obj3(CARDROWS,CARDCOLS,MINVAL,MAXVAL);
@@ -226,18 +226,18 @@ int main(){
     obj3.reCreateCard(2*CARDROWS,CARDCOLS,MINVAL,MAXVAL);
     cout << endl << "Testing reCreateCard for a normal case:" << endl;
     if (tester.reCreateCardTest(obj3, 2*CARDROWS, CARDCOLS, MINVAL, MAXVAL)){
-        cout << endl << "ReCreateCard test for normal case passed!" << endl;
+        cout << "ReCreateCard test for normal case passed!" << endl;
     } else {
-        cout << endl << "ReCreateCard test for normal case failed!" << endl; 
+        cout << "ReCreateCard test for normal case failed!" << endl; 
     }
 
     obj3.clear();
     obj3.reCreateCard(2*CARDROWS,CARDCOLS,-10,1000);
     cout << endl << "Testing reCreateCard for an error case:" << endl;
     if (tester.reCreateCardTest(obj3, CARDROWS, CARDCOLS, -10, 1000)){
-        cout << endl << "ReCreateCard test for error case passed!" << endl;
+        cout << "ReCreateCard test for error case passed!" << endl;
     } else {
-        cout << endl << "ReCreateCard test for error case failed!" << endl; 
+        cout << "ReCreateCard test for error case failed!" << endl; 
     }
 
     Bingo obj4(CARDROWS,CARDCOLS,MINVAL,MAXVAL);
@@ -245,9 +245,9 @@ int main(){
     int hits = obj4.play(BALLS,balls);
     cout << endl << "Testing play for a normal case:" << endl;
     if (tester.playTest(obj4, hits, BALLS, balls)){
-        cout << endl << "Play test for normal case passed!" << endl;
+        cout << "Play test for normal case passed!" << endl;
     } else {
-        cout << endl << "Play test for normal case failed!" << endl; 
+        cout << "Play test for normal case failed!" << endl; 
     }
 
     Bingo obj5(CARDROWS,CARDCOLS,MINVAL,MAXVAL);
@@ -255,36 +255,36 @@ int main(){
     hits = obj5.play(1000,balls);
     cout << endl << "Testing play for an error case:" << endl;
     if (tester.playTest(obj4, hits, 1000, balls)){
-        cout << endl << "Play test for error case passed!" << endl;
+        cout << "Play test for error case passed!" << endl;
     } else {
-        cout << endl << "Play test for error case failed!" << endl; 
+        cout << "Play test for error case failed!" << endl; 
     }
 
     cout << endl << "The following is a dump of a newly initialized and played bingo card:" << endl;
     Bingo obj6(CARDROWS,CARDCOLS,MINVAL,MAXVAL);
     if (obj6.initCard()){
         obj6.dumpCard();
-        cout << "\ngame over after " << obj6.play(BALLS,balls) << " hits!\n" << endl;
+        cout << "\ngame over after " << obj6.play(BALLS,balls) << " hits!" << endl;
         obj6.dumpCard();
     }
 
     Bingo obj7;
     obj7 = obj6;
-    cout << endl << "Testing assignment operator for a normal case" << endl;
+    cout << endl << "Testing assignment operator for a normal case:" << endl;
     if (tester.assignmentTest(obj7, obj6)){
-        cout << endl << "Assignment test for normal case passed!" << endl;
+        cout << "Assignment test for normal case passed!" << endl;
     } else {
-        cout << endl << "Assignment test for normal case passed!" << endl;
+        cout << "Assignment test for normal case passed!" << endl;
     }
     obj6.clear();
 
     Bingo obj8(CARDROWS,CARDCOLS,MINVAL,MAXVAL);
     obj8 = obj6;
-    cout << endl << "Testing assignment operator for an error case" << endl;
+    cout << endl << "Testing assignment operator for an error case:" << endl;
     if (tester.assignmentTest(obj8, obj6)){
-        cout << endl << "Assignment test for error case passed!" << endl;
+        cout <<"Assignment test for error case passed!" << endl;
     } else {
-        cout << endl << "Assignment test for error case passed!" << endl;
+        cout <<"Assignment test for error case passed!" << endl;
     }
 
     cout << endl << "Following is the result of re-initializing the object and re-play:\n" << endl;
@@ -292,7 +292,7 @@ int main(){
         obj6.initCard();
         obj6.dumpCard();
         balls = obj6.drawBalls();
-        cout << "\ngame over after " << obj6.play(BALLS,balls) << " hits!\n" << endl;
+        cout << "\ngame over after " << obj6.play(BALLS,balls) << " hits!" << endl;
         obj6.dumpCard();
     }
     
