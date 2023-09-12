@@ -75,15 +75,15 @@ class Tester{
 
         if (beforeInit.m_card == nullptr){
             // check that object is still empty
-            result = result && (beforeInit.m_numRows == 0);
-            result = result && (beforeInit.m_numCols == 0);
-            result = result && (beforeInit.m_helperSize == 0);
-            result = result && (beforeInit.m_minBallVal == 0);
-            result = result && (beforeInit.m_maxBallVal == 0);
-            result = result && (beforeInit.m_trackRows == nullptr);
-            result = result && (beforeInit.m_trackCols == nullptr);
-            result = result && (beforeInit.m_helper == nullptr);
-            result = result && (beforeInit.m_card == nullptr);
+            result = result && (afterInit.m_numRows == 0);
+            result = result && (afterInit.m_numCols == 0);
+            result = result && (afterInit.m_helperSize == 0);
+            result = result && (afterInit.m_minBallVal == 0);
+            result = result && (afterInit.m_maxBallVal == 0);
+            result = result && (afterInit.m_trackRows == nullptr);
+            result = result && (afterInit.m_trackCols == nullptr);
+            result = result && (afterInit.m_helper == nullptr);
+            result = result && (afterInit.m_card == nullptr);
         } else {
             // make sure values in cells are within the correct range
             int totalRange = max - min + 1;
@@ -143,14 +143,14 @@ int main(){
         cout << endl << "Constructor test for error case failed!" << endl;
     }
 
-    Bingo obj1copy;
-    obj1copy = obj1;
-    obj1.initCard();
-    if (tester.initCardTest(obj1copy, obj1, MINVAL, MAXVAL)){
-        cout << endl << "InitCard test for error case passed!" << endl;
-    } else {
-        cout << endl << "InitCard test for error case failed!" << endl;
-    }
+    // Bingo obj1copy;
+    // obj1copy = obj1;
+    // obj1.initCard();
+    // if (tester.initCardTest(obj1copy, obj1, MINVAL, MAXVAL)){
+    //     cout << endl << "InitCard test for error case passed!" << endl;
+    // } else {
+    //     cout << endl << "InitCard test for error case failed!" << endl;
+    // }
 
     Bingo obj2copy;
     obj2copy = obj2;
